@@ -57,6 +57,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>TO DO LIST</h1>
       <form onSubmit={handleSubmit}>
         <input
           autoFocus={true}
@@ -68,7 +69,7 @@ function App() {
       <ul className="items-container">
         {state.map(item => <Item key={item.id} item={item} handleDelete={handleDelete} handleUpdate={handleUpdate}/>)}
       </ul>
-      <button onClick={handleReset}>RESET</button>
+      <button onClick={handleReset} className="reset">RESET</button>
     </div>
   );
 }

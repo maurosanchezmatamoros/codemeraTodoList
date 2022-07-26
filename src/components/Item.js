@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "./Item.css"
 
 
 const Item = ({ item, handleDelete, handleUpdate }) => {
@@ -7,7 +8,7 @@ const Item = ({ item, handleDelete, handleUpdate }) => {
     const [updateTodo, setUpdateTodo] = useState("")
 
     if(updateInput === true) return(
-        <li>
+        <li className="list-item">
             <input
             placeholder={item.todo}
             autoFocus={true}
@@ -17,14 +18,14 @@ const Item = ({ item, handleDelete, handleUpdate }) => {
             <button onClick={() => {
                 handleUpdate({id: item.id, todo: updateTodo})
                 setUpdateInput(false)
-                }}>OK</button>
+                }}><img src="./images/svg/ok.svg" alt="delete" width={"20px"}/></button>
         </li>
     )
 
     return(
-        <li>{item.todo}
-            <button onClick={() => handleDelete(item)}>X</button>
-            <button onClick={() => setUpdateInput(true)}>Edit</button>
+        <li className="list-item">{item.todo}
+            <button onClick={() => handleDelete(item)}><img src="./images/svg/delete.svg" alt="delete" width={"18px"}/></button>
+            <button onClick={() => setUpdateInput(true)}><img src="./images/svg/edit.svg" alt="delete" width={"20px"}/></button>
         </li>
     )
 }
