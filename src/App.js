@@ -35,6 +35,26 @@ function App() {
     })
   }
 
+  const handleDelete = (item) => {
+    dispatch({
+      type: "delete_item",
+      payload: item
+    })
+  }
+
+  const handleReset = () => {
+    dispatch({
+      type: "reset_items",
+    })
+  }
+
+  const handleUpdate = (todo) => {
+    dispatch({
+      type: "update_item",
+      payload: todo
+    })
+  }
+
   return (
     <div className="App">
       <form onSubmit={handleSubmit}>
@@ -46,8 +66,9 @@ function App() {
         <button type="submit">ADD</button>
       </form>
       <ul className="items-container">
-        {state.map(item => <Item key={item.id} item={item}/>)}
+        {state.map(item => <Item key={item.id} item={item} handleDelete={handleDelete} handleUpdate={handleUpdate}/>)}
       </ul>
+      <button onClick={handleReset}>RESET</button>
     </div>
   );
 }
