@@ -1,12 +1,15 @@
 import { useEffect, useReducer } from "react";
 import "./App.css";
 import reducer from "./reducer";
+import Item from "./components/Item";
 
-const DATA = ["item 1", "item 2", "item 3"];
+const DATA = [
+  {id: 1, todo: "item 1"},
+  {id: 2, todo: "item 2"},
+  {id: 3, todo: "item 3"}
+]
 
-const initialState = {
-  items: [],
-};
+const initialState = []
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -14,18 +17,14 @@ function App() {
   useEffect(() => {
     dispatch({
       type: "set_items",
-      payload: {
-        items: DATA,
-      },
+      payload: DATA
     });
-  });
+  },[]);
 
   return (
     <div className="App">
       <ul className="items-container">
-        {state.items.map((item) => (
-          <li>{item}</li>
-        ))}
+        {state.map(item => <Item key={item.id} item={item}/>)}
       </ul>
     </div>
   );

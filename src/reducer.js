@@ -1,13 +1,11 @@
-export default function redurer(state, action) {
+const reducer = (state, action) => {
   switch (action.type) {
-    case "set_items": {
-      return {
-        ...state,
-        items: state.items.concat(action.payload.items),
-      };
-    }
-    default: {
-      return state;
-    }
+    case "set_items":
+      return action.payload
+
+    default:
+      return state
   }
 }
+
+export default reducer
